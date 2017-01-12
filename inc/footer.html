@@ -1,0 +1,58 @@
+
+
+<!-- begin SnapEngage code -->
+<script type="text/javascript">
+(function() {
+  var se = document.createElement('script');
+  se.type = 'text/javascript';
+  se.async = true;
+  se.src = '//storage.googleapis.com/code.snapengage.com/js/61f00017-a5e4-4c24-8dd7-4600f0db94c2.js';
+  var done = false;
+  se.onload = se.onreadystatechange = function() {
+    if (!done && (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete')) {
+      done = true;
+      /* Place your SnapEngage JS API code below */
+      /* SnapEngage.allowChatSound(true); Example JS API: Enable sounds for Visitors. */
+
+      addCustomCSS('my-css-file.css');
+
+    }
+  };
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(se, s);
+})();
+</script>
+<!-- end SnapEngage code -->
+
+<script>
+  // Add CSS to chatbox
+  var addCustomCSS = function(cssFilePath) {
+
+    /*
+      Append the custom CSS file to the iframe body, where the boxes live
+      This will apply the CSS to all 'boxes' (chatbox, prechat, offline)
+    */
+
+    // Create a 'link' element for the CSS file
+    var link = document.getElementById('snapengage-iframe').contentWindow.document.createElement('link');
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = cssFilePath;
+
+    // Append link element to the iframe
+    document.getElementById('snapengage-iframe').contentWindow.document.body.appendChild(link);
+
+    /*
+      Append the custom CSS file to the document itself, where the online/offline button lives
+      This will apply the CSS to the online/offline button
+    */
+    var link = document.createElement('link');
+
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = cssFilePath;
+
+    document.body.appendChild(link);
+  }
+
+</script>
