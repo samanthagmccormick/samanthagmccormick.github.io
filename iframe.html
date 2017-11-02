@@ -5,6 +5,14 @@
   <meta charset="utf-8">
   <title>Page 1</title>
 
+  <script type="text/javascript">
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      alert("iframe window onerror fired");
+    };
+
+    console.log("window.onerror: " + window.onerror);
+
+  </script>
 
 
 </head>
@@ -13,7 +21,6 @@
 
   <div>I am an iframe! Hear me roarrrr</div>
   <a style="margin:20px;color:purple;font-size:20px;" onclick="SnapEngage.hello()">Click me to fire SnapEngage.hello()</a>
-
 
 </body>
 
