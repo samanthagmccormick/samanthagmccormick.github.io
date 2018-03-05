@@ -23,7 +23,7 @@
 
   <body>
 
-    <h1>openProactiveChat() vs. "no praoctive" cookie</h1>
+    <h1>openProactiveChat() vs. "no proactive" cookie</h1>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.js"></script>
@@ -78,7 +78,6 @@
 
 
     <h3>How to test:</h3>
-    <p>1A) Go to this branch and save in Design Studio tab</p>>
     <p>1) Click the inline button, and openProactiveChat() will fire</p>
     <p>2) Close it</p>
     <p>3) Click button again</p>
@@ -106,7 +105,7 @@
 
     ^^^
     <p>If Online: Proactive will always open, regardless of "no proactive" cookie</p>
-    <p>If Offline: Offline form will NOT open</p>
+    <p>If Offline: Offline form will NOT open ever</p>
 
     <button class="button chat-btn" onclick="startSupportChat_3();">
       openProactiveChat(false, false, 'Hi there...');
@@ -116,8 +115,7 @@
 
     ^^^
     <p>If Online: Proactive will NOT open if there is a "no proactive" cookie.</p>
-    <p>Delete the cookie, click the button, and proactive WILL open.</p>
-    <p>If Offline: Offline form will NOT open.</p>
+    <p>If Offline: Offline form will NOT open ever.</p>
 
     <button class="button chat-btn" onclick="startSupportChat_4();">
       openProactiveChat(false, true, 'Hi there...');
@@ -127,8 +125,7 @@
 
     ^^^
     <p>If Online: Proactive will NOT open if there is a "no proactive" cookie.</p>
-    <p>Delete the cookie, click the button, and proactive WILL open</p>
-    <p>If Offline: Offline form WILL open.</p>
+    <p>If Offline: Offline form WILL NOT open if there is a "no proactive" cookie. If no cookie, offline form WILL open.</p>
 
 
     <!-- Staging - testing's widget -->
