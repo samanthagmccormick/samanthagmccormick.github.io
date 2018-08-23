@@ -32,6 +32,10 @@ Once you have Jekyll installed, simply change directory into the sample and star
     cd jekyllsite
     jekyll serve
 
+To build and deploy:
+
+    jekyll build
+
 The Jekyll samples are built with the [Liquid template engine](https://github.com/Shopify/liquid) and YAML for the data (YAML was chosen because the default templates use YAML for data, although JSON and CSV are supported).
 
 For a thorough tutorial on how to use Jekyll and how the sample site was built, read [this article on the Telerik Developer Network](http://developer.telerik.com/featured/getting-started-with-jekyll/).
