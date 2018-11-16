@@ -1,0 +1,15 @@
+body {
+  margin:20px;
+}
+
+h1 {
+  color: salmon;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+.menu > a {
+  display: block;
+}

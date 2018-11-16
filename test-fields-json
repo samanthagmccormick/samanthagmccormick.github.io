@@ -1,0 +1,468 @@
+/*
+Adding useful snippets for local testing:
+
+CHECKBOX:
+  {
+    "type": "checkbox",
+    "label": "A name for this field",
+    "name": "simpleCheckbox",
+    "required": true, //toggle to false also for testing
+    "requiredMessage": null,
+    "options": [{
+      "value": "passed to agent",
+      "displayText": "shows next to checkbox"
+    }]
+  }
+
+DROPDOWN:
+  {
+    "type": "dropdown",
+    "label": "Dropdown",
+    "name": "dropdown",
+    "placeholder": "select here",
+    "required": true,
+    "requiredMessage": "Please enter a valid email address",
+    "options": [{
+      "value": "value1",
+      "displayText": "Option 1"
+    }, {
+      "value": "value1",
+      "displayText": "Option 2"
+    }]
+  }
+
+*/
+
+var customDesignDefaultOptions = {
+  "id": null,
+  "orgId": null,
+  "name": null,
+  // WE DO NOT reference options.baseFont in CSS due to google font-face req's
+  "baseFont": "'Lato', sans-serif|300|Light|import",
+  "baseFontColor": "#000",
+  // Using snapabug-hr-staging static asset bucket for local dev
+  "staticUrl": "https://storage.googleapis.com/snapabug-hr-staging/studio",
+  "logoUrl": "https://www.snapengage.com/partner?src=widget&id={0}&l={1}",
+  "onlineButton": {
+    "fontSize": "14",
+    "borderWidth": "0",
+    "borderRadius": "17",
+    "position": "bottom",
+    "offset": "right",
+    "offsetValue": "0",
+    "offsetUnit": "%",
+    "text": null,
+    "imageUrl": null,
+    "imageWidth": null,
+    "imageHeight": null,
+    "svgIcon": "comments-o",
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#FFF",
+    "notifyFontColor": "#FFF",
+    "notifyBgColor": "#CB4437",
+    "notifyBorderColor": "#FFF"
+  },
+  "offlineButton": {
+    "fontSize": "14",
+    "borderWidth": "0",
+    "borderRadius": "17",
+    "position": "bottom",
+    "offset": "right",
+    "offsetValue": "0",
+    "offsetUnit": "%",
+    "text": null,
+    "imageUrl": null,
+    "imageWidth": null,
+    "imageHeight": null,
+    "svgIcon": "envelope-o",
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#FFF",
+    "notifyFontColor": "#FFF",
+    "notifyBgColor": "#9C9C9C",
+    "notifyBorderColor": "#FFF"
+  },
+  "placement": "right-center",
+  "height": "500",
+  "width": "380",
+  "padding": "0",
+  "bgColor": "#FFF",
+  "bgImageUrl": null,
+  "bgImageRepeat": false,
+  "bgPatternUrl": "Ultra-Light-Linen.png",
+  "bgOpacity": "100",
+  "borderColor": "#000",
+  "borderWidth": "0",
+  "borderRadius": "4",
+  "boxShadow": "0 0 0.688em 0 rgba(0,0,0,0.5)",
+  "showPoweredBy": true,
+  "poweredByPosition": "center",
+  "logoPlacement": "footer",
+  "logoPosition": "left",
+  "logoPadding": "0",
+  "logoImageUrl": null,
+  "showMinimize": false,
+  "minimizeIcon": "minimize_thin",
+  "showClose": true,
+  "closeIcon": "close_thin",
+  "prechatHeader": {
+    "text": "Chat With Us",
+    "fontColor": "#FFF",
+    "fontSize": "16",
+    "fontWeight": "normal",
+    "bgColor": "#FF9900",
+    "svgIcon": "comments",
+    "svgIconPosition": "left"
+  },
+  "chatHeader": {
+    "text": "Chat",
+    "fontColor": "#FFF",
+    "fontSize": "16",
+    "fontWeight": "normal",
+    "bgColor": "#FF9900",
+    "svgIcon": "comments",
+    "svgIconPosition": "left"
+  },
+  "offlineHeader": {
+    "text": "Contact Us",
+    "fontColor": "#FFF",
+    "fontSize": "16",
+    "fontWeight": "normal",
+    "bgColor": "#FF9900",
+    "svgIcon": "comment",
+    "svgIconPosition": "left"
+  },
+  "chatTextarea": {
+    "type": "textarea",
+    "bgColor": "#FFF",
+    "fontColor": "#000",
+    "fontSize": "14",
+    "borderColor": "#FF9900",
+    "borderWidth": "1",
+    "borderRadius": "0",
+    "isTopBorderOnly": true,
+    "padding": "10",
+    "placeholder": "Enter your message...",
+    "placeholderColor": "#C0C0C0"
+  },
+  "chatSendButton": {
+    "text": "SEND",
+    "svgIcon": "icn-send-outline", // set to null to hide the send icon
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#000",
+    "borderWidth": "0",
+    "borderRadius": "4",
+    "padding": "10"
+  },
+  "chatCancelFileUploadButton": {
+    "text": "CANCEL",
+    "svgIcon": null,
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#000",
+    "borderWidth": "0",
+    "borderRadius": "4",
+    "padding": "10"
+  },
+  "chatCloseButton": {
+    "text": "CLOSE",
+    "svgIcon": null,
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#000",
+    "borderWidth": "0",
+    "borderRadius": "4",
+    "padding": "10"
+  },
+  "chatCallMeButton": {
+    "text": "CALL ME",
+    "svgIcon": null,
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#000",
+    "borderWidth": "0",
+    "borderRadius": "4",
+    "padding": "10"
+  },
+  "agentMessage": {
+    "bubble": true,
+    "avatarBorderRadius": "20",
+    "avatarPadding": "10",
+    "avatarPosition": null,
+    "bgColor": "#FFCC7F",
+    "borderColor": "#000",
+    "borderWidth": "0",
+    "borderRadius": "20",
+    "fontColor": "#000",
+    "fontSize": "14"
+  },
+  "visitorMessage": {
+    "bubble": true,
+    "avatarBorderRadius": "20",
+    "avatarPadding": "10",
+    "avatarPosition": null,
+    "bgColor": "#9BD6FF",
+    "borderColor": "#000",
+    "borderWidth": "0",
+    "borderRadius": "20",
+    "fontColor": "#000",
+    "fontSize": "14"
+  },
+  "visitorName": "Me",
+  "fieldBorderWidth": "1",
+  "fieldBorderRadius": "5",
+  "fieldBgColor": "#FFF",
+  "fieldBorderColor": "#FF9900",
+  "fieldFontColor": "#000",
+  "fieldLabelColor": "#000",
+  "fieldPlaceholderColor": "#C0C0C0",
+  // *** Fields with Options must use this syntax:
+  // "options": [{
+  //     "value": "b4a3faab-5309-4070-b884-5677e3475943",
+  //     "displayText": "Phil's #1"
+  // }, {
+  //     "value": "233d08cc-8203-4db4-9c5a-7ec216eb93a3",
+  //     "displayText": "Testings 2"
+  // }]
+  "offlineFields": [{
+    "type": "textarea",
+    "label": "Your Question",
+    "name": "description",
+    "placeholder": "How can we help you today?",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "email",
+    "label": "Email",
+    "name": "email",
+    "placeholder": "Enter your email address",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "text",
+    "label": "Name",
+    "name": "name",
+    "placeholder": "Enter your name",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "dropdown",
+    "label": "Dropdown",
+    "name": "Dropdown",
+    "placeholder": "Select an item",
+    "required": true,
+    "requiredMessage": null,
+    "options": [{
+      "value": "Option 1",
+      "displayText": "Option 1"
+    }, {
+      "value": "Option 2",
+      "displayText": "Option 2"
+    }]
+  }, {
+    "type": "widgetselector",
+    "label": "Widget Selector",
+    "name": "widgetselector",
+    "placeholder": "Select a widget",
+    "required": true,
+    "requiredMessage": null,
+    "options": [{
+      "value": "7ddd67f0-f3f8-4911-946c-bb9f43aae9d8",
+      "displayText": "Legacy Chat Widget"
+    }, {
+      "value": "7ddd67f0-f3f8-4911-946c-bb9f43aae9d8",
+      "displayText": "Sam Staging Test Widget"
+    }]
+  }, {
+    "type": "tel",
+    "label": "Phone",
+    "name": "phone",
+    "placeholder": "Enter your phone number",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "text",
+    "label": "Company",
+    "name": "company",
+    "placeholder": "Enter your company",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "label",
+    "label": "Label Text",
+    "name": "Label Text",
+    "placeholder": null,
+    "required": null,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "text",
+    "label": "Single Line Text Input",
+    "name": "SingleLineTextInput",
+    "placeholder": "Enter your text",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "textarea",
+    "label": "Multi Line Text Area",
+    "name": "MultiLineTextArea",
+    "placeholder": "Enter your text",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "checkbox",
+    "label": "Checkbox",
+    "name": "Checkbox",
+    "placeholder": null,
+    "required": true,
+    "requiredMessage": null,
+    "options": [{
+      "value": "Checkbox Label",
+      "displayText": "Checkbox Label"
+    }]
+  }],
+  "offlineSendEmailButton": {
+    "text": "SEND EMAIL",
+    "svgIcon": "envelope-o",
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#FF9900",
+    "borderWidth": "0",
+    "borderRadius": "4",
+    "padding": "10"
+  },
+  "prechatFields": [{
+    "type": "textarea",
+    "label": "Your Question",
+    "name": "description",
+    "placeholder": "How can we help you today?",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "email",
+    "label": "Email",
+    "name": "email",
+    "placeholder": "Enter your email address",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "checkbox",
+    "label": "Checkbox",
+    "name": "Checkbox",
+    "placeholder": null,
+    "required": true,
+    "requiredMessage": null,
+    "options": [{
+      "value": "Checkbox Label",
+      "displayText": "Checkbox Label"
+    }]
+  }, {
+    "type": "text",
+    "label": "Name",
+    "name": "name",
+    "placeholder": "Enter your name",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "dropdown",
+    "label": "Dropdown",
+    "name": "Dropdown",
+    "placeholder": "Select an item",
+    "required": true,
+    "requiredMessage": null,
+    "options": [{
+      "value": "Option 1",
+      "displayText": "Option 1"
+    }, {
+      "value": "Option 2",
+      "displayText": "Option 2"
+    }]
+  }, {
+    "type": "widgetselector",
+    "label": "Widget Selector",
+    "name": "widgetselector",
+    "placeholder": "Select a widget",
+    "required": true,
+    "requiredMessage": null,
+    "options": [{
+      "value": "7ddd67f0-f3f8-4911-946c-bb9f43aae9d8",
+      "displayText": "Legacy Chat Widget"
+    }, {
+      "value": "7ddd67f0-f3f8-4911-946c-bb9f43aae9d8",
+      "displayText": "Sam Staging Test Widget"
+    }]
+  }, {
+    "type": "tel",
+    "label": "Phone",
+    "name": "phone",
+    "placeholder": "Enter your phone number",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "text",
+    "label": "Company",
+    "name": "company",
+    "placeholder": "Enter your company",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "label",
+    "label": "Label Text",
+    "name": "Label Text",
+    "placeholder": null,
+    "required": null,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "text",
+    "label": "Single Line Text Input",
+    "name": "SingleLineTextInput",
+    "placeholder": "Enter your text",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "textarea",
+    "label": "Multi Line Text Area",
+    "name": "MultiLineTextArea",
+    "placeholder": "Enter your text",
+    "required": true,
+    "requiredMessage": null,
+    "options": null
+  }, {
+    "type": "checkbox",
+    "label": "Checkbox",
+    "name": "Checkbox_2",
+    "placeholder": null,
+    "required": true,
+    "requiredMessage": null,
+    "options": [{
+      "value": "Checkbox Label",
+      "displayText": "Checkbox Label"
+    }]
+  }],
+  "prechatChatButton": {
+    "text": "START CHAT",
+    "svgIcon": "envelope-o",
+    "fontColor": "#FFF",
+    "bgColor": "#FF9900",
+    "borderColor": "#FF9900",
+    "borderWidth": "0",
+    "borderRadius": "4",
+    "padding": "10"
+  }
+};
