@@ -1,5 +1,5 @@
 // using localhost orgId and widget
-// var localhostUrl = 'http://127.0.0.1:8888/api/v2/5629499534213120/logs?start=2018-01-01&end=2018-01-04';
+// var localhostUrl = 'https://127.0.0.1:8888/api/v2/5629499534213120/logs?start=2018-01-01&end=2018-01-04';
 
 // $.ajax({
 //   // beforeSend: function(xhrObj) {
