@@ -31,6 +31,126 @@
     />
     <link rel="stylesheet" type="text/css" href="main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      var runXHR_agentstatus = function() {
+        var data = JSON.stringify({
+          agent_id: "samantha+2@snapengage.com",
+          status: "pause",
+          sub_status: "Sooooo online"
+        });
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function() {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        });
+
+        xhr.open("POST", "https://timzon000.appspot.com/api/v2/agentstatus");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader(
+          "Authorization",
+          "32065fd7ccbdc80ae8888b559dd28cb5"
+        );
+
+        xhr.send(data);
+      };
+
+      var runAJAX_agentstatus = function() {
+        var settings = {
+          async: true,
+          crossDomain: true,
+          url:
+            "https://timzon000.appspot.com/snapengage/agentStatusApiAction?agentId=sam@test.com&status=offline&subStatus=boopeedoop&timestamp=123",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: "ca90070612a56c08e6fa0665181bc471",
+            Accept: "*/*"
+          },
+          data: ""
+        };
+
+        $.ajax(settings).done(function(response) {
+          console.log(response);
+        });
+      };
+
+      var runXHR_provisioning = function() {
+        var data = JSON.stringify({
+          email: "SamMalveyy@test.com",
+          name: "SamMalveyy@test.com",
+          password: "123456",
+          phone: "555-111-2222",
+          accountType: "enterprise"
+        });
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function() {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        });
+
+        xhr.open(
+          "PUT",
+          "https://timzon000.appspot.com/api/v1/user.json?api_key=550e8400-e29b-41d4-a716-446655440000"
+        );
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.send(data);
+      };
+
+      var runXHR_visitorChat = function() {
+        var data = null;
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function() {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        });
+
+        xhr.open(
+          "GET",
+          "https://timzon000.appspot.com/api/v1/chat/5286374d-5c92-419d-bcdb-b926d242b78b"
+        );
+        xhr.setRequestHeader("x-api-key", "32065fd7ccbdc80ae8888b559dd28cb5");
+
+        xhr.send(data);
+      };
+
+      var runXHR_logs = function() {
+        var data = null;
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function() {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        });
+
+        xhr.open(
+          "GET",
+          "https://timzon000.appspot.com/api/v2/6620145412734976/logs?start=2019-08-20&end=2019-08-28"
+        );
+        xhr.setRequestHeader(
+          "Authorization",
+          "32065fd7ccbdc80ae8888b559dd28cb5"
+        );
+
+        xhr.send(data);
+      };
+    </script>
   </head>
 
   <body>
